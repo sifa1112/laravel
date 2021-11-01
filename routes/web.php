@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -158,13 +159,21 @@ Route::get('pembeli', function () {
 });
 
 //table pembelian
-Route::get('pembelian', function () {
-    $query = App\Models\pembelian::all();
-    return $query;
-});
+// Route::get('pembelian', function () {
+//     $query = App\Models\pembelian::all();
+//     return $query;
+// });
 
 //table suplier
 Route::get('suplier', function () {
     $query = App\Models\suplier::all();
     return $query;
 });
+
+//route dengan controller
+Route::get ('data-siswa', [MyController::class, 'index']);
+Route::get ('posts', [MyController::class, 'posting']);
+Route::get ('barang', [MyController::class, 'barang']);
+Route::get ('pembelian', [MyController::class, 'pembelian']);
+Route::get ('pembeli', [MyController::class, 'pembeli']);
+Route::get('pembelian/{id}', [MyController::class, 'singlepembelian']);
